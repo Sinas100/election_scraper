@@ -1,0 +1,14 @@
+pathlib
+os
+sys
+datetime
+time
+numpy
+shutil
+selenium
+csv
+requests
+webdriver_manager
+pyautogui
+hashlib
+pyperclip
