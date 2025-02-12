@@ -38,8 +38,10 @@ DOWNLOAD\_FREQ\_DICT.
     Open crontab by running crontab -e in your terminal.
 
     Enter these two lines in your crontab:
+   ```
     00 6 * * * python3 {ROOT}/election\_scrapers/scrapers/executor.py
     00 18 * * * python3 {ROOT}/election\_scrapers/scrapers/executor.py "evening"
+   ```
     (where ROOT is the full path to the directory containg election\_scrapers)
 
     You can change the specific timing based on when you want the morning and
@@ -66,7 +68,9 @@ DOWNLOAD\_FREQ\_DICT.
     Open crontab by running crontab -e in your terminal.
     
     Enter this line in your crontab:
+    ```
     00 6 * * * python3 {ROOT}/election\_plotters/executor.py
+    ```
     (where ROOT is the full path to the directory containg election\_scrapers)
-14. Sit back and relax on the beach in Puerto Rico while your data and plots
+15. Sit back and relax on the beach in Puerto Rico while your data and plots
 make themselves
