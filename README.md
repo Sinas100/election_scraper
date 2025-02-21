@@ -53,7 +53,7 @@ DOWNLOAD\_FREQ\_DICT.
     a change has been made to errors.txt in the last day. You can learn more
     about getting a slack webhooks address for your slack here: 
     https://api.slack.com/messaging/webhooks. Note that some organizations
-    may limit the use of webhooks.
+    may limit the use of webhooks so you may need a non-organizational slack.
 10. Setup plotters
     Set root directory in plotting_helper.py
 11. Write additional plotters as needed
