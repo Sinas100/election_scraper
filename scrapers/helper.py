@@ -21,7 +21,9 @@ import requests
 ###############################################################################
 
 # Can be set to "ORIGINAL", "OVERWRITE", or "SAVE_COPY" (The states will be
-# treated as ORIGINAL by default). Be extremely careful with OVERWRITE!!!
+# treated as ORIGINAL by default). More complete descriptions of when you should
+# use each setting can be found in the README.
+# Be extremely careful with OVERWRITE as you are deleting data!!!
 DOWNLOAD_TYPE_DICT = {"NC/registration": "OVERWRITE",
                       "PA/early": "OVERWRITE",
                       "TX/early": "SAVE_COPY"}
