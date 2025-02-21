@@ -56,7 +56,10 @@ DOWNLOAD\_FREQ\_DICT.
     may limit the use of webhooks so you may need a non-organizational slack.
 10. Setup plotters
     Set root directory in plotting_helper.py
-11. Write additional plotters as needed
+    *Note that the NC plotter won't work out of the box as the past_data folder 
+    is not on the github as the files were too large to upload, even compressed.
+    Those data are available upon request to anyone interested!
+12. Write additional plotters as needed
     3 example plot types have been laid out in plotting\_helper.py (more details
     details in plotting\_helper.py):
         1. Plot values relative to the current and a past election (ex NC early)
@@ -64,9 +67,9 @@ DOWNLOAD\_FREQ\_DICT.
         (ex WI reg)
         3. Plot change from a previous time period (ex WI reg if you change to
         use plot_change function)
-12. Add plotters and cleaners to executor.py in plotters as needed
+13. Add plotters and cleaners to executor.py in plotters as needed
     (Simmilar format to the other executor except for no default of weekly)
-13. Setup the plotting automation 
+14. Setup the plotting automation 
     Open crontab by running crontab -e in your terminal.
     
     Enter this line in your crontab:
@@ -74,5 +77,5 @@ DOWNLOAD\_FREQ\_DICT.
     00 6 * * * python3 {ROOT}/election\_plotters/executor.py
     ```
     (where ROOT is the full path to the directory containg election\_scrapers)
-15. Sit back and relax on the beach in Puerto Rico while your data and plots
+15. Sit back and relax on the beach while your data and plots
 make themselves
