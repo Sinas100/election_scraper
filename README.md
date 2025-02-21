@@ -26,14 +26,16 @@ DOWNLOAD\_FREQ\_DICT.
 8. Configure download type
     All scrapers default to original which download all new files and do
     not redownload old files. SAVE\_COPY downloads all available files every
-    time the scraper runs and saves it to a folder archive\_{CURR\_DATE}. 
-    OVERWRITE is similar to SAVE\_COPY but each time it runs it clears all
-    previous archive\_{PAST\_DATE} folders. By default NC/registration and 
-    PA/early are set to overwrite as they take up a lot of storage. 
-    If you have the space and want more data, you can remove those lines.
-    TX/early has SAVE\_COPY as we found that they modify early voting numbers
-    for past days as they process ballots from previous days.
-9. Setup the automation 
+    time the scraper runs and saves it to a folder archive\_{CURR\_DATE}.
+    This should be used when past data changes and the files are not too
+    large. For example, TX/early has SAVE\_COPY as the default as we found 
+    that they modify early voting numbers for past days as they process
+    ballots received previous days. OVERWRITE is similar to SAVE\_COPY but 
+    each time it runs it clears all previous archive\_{PAST\_DATE} folders.
+    By default NC/registration and  PA/early are set to overwrite as they 
+    take up a lot of storage. If you have the space and want more data,
+    you can remove those lines.
+10. Setup the automation 
 
     Open crontab by running crontab -e in your terminal.
 
