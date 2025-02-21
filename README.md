@@ -74,7 +74,7 @@ DOWNLOAD\_FREQ\_DICT.
     
     Enter this line in your crontab:
     ```
-    00 6 * * * python3 {ROOT}/election\_plotters/executor.py
+    00 10 * * * python3 {ROOT}/election\_plotters/executor.py
     ```
     (where ROOT is the full path to the directory containg election\_scrapers)
 15. Sit back and relax on the beach while your data and plots
