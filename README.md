@@ -21,9 +21,11 @@ DOWNLOAD\_FREQ\_DICT.
     in headless mode. AZ/registration and NV/registration are also disabled by
     default as CAPTCHA prevents them from working right now. I've included them
     in case you have a monitor you can run a non-headless (headfull?) scraper
-    on and want data from states like MT and RI.
-7. Open election\_scraper/scrapers/helper.py
-8. Configure download type
+    on and want data from states like MT and RI. Further PA/early requires a
+    username and password to log into the data portal which can be requested
+    here: https://paebrprod.powerappsportals.us/EBR/DOS/mail-in-voter-file-request/
+8. Open election\_scraper/scrapers/helper.py
+9. Configure download type
     All scrapers default to original which download all new files and do
     not redownload old files. SAVE\_COPY downloads all available files every
     time the scraper runs and saves it to a folder archive\_{CURR\_DATE}.
