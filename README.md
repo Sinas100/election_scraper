@@ -23,7 +23,7 @@ DOWNLOAD\_FREQ\_DICT.
     in case you have a monitor you can run a non-headless (headfull?) scraper
     on and want data from states like MT and RI. Further PA/early requires a
     username and password to log into the data portal which can be requested
-    here: https://paebrprod.powerappsportals.us/EBR/DOS/mail-in-voter-file-request/
+    [here](https://paebrprod.powerappsportals.us/EBR/DOS/mail-in-voter-file-request/)
 8. Open election\_scraper/scrapers/helper.py
 9. Configure download type
     All scrapers default to original which download all new files and do
@@ -53,9 +53,9 @@ DOWNLOAD\_FREQ\_DICT.
 14. Setup SlackMessage.py (Optional)
     You can set up slack notifications using webhooks to notify you when
     a change has been made to errors.txt in the last day. You can learn more
-    about getting a slack webhooks address for your slack here: 
-    https://api.slack.com/messaging/webhooks. Note that some organizations
-    may limit the use of webhooks so you may need a non-organizational slack.
+    about getting a slack webhooks address for your slack [here](https://api.slack.com/messaging/webhooks).
+    Note that some organizations may limit the use of webhooks so you may need
+    a non-organizational slack.
 10. Setup plotters
     Set root directory in plotting_helper.py
     *Note that the NC plotter won't work out of the box as the past_data folder 
