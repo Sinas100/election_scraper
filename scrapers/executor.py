@@ -28,7 +28,8 @@ DOWNLOAD_FREQ_DICT = {"EVERY_MORNING": ["PA/early",
                                         "TX/early"],
                         "EVERY_EVENING": ["FL/vbm"],
                         "INACTIVE": ["MT/registration", "RI/registration",
-                                     "NV/registration", "AZ/registration"]}
+                                     "NV/registration", "AZ/registration",
+                                     "PA/early"]}
 
 ###############################################################################
 # Running
