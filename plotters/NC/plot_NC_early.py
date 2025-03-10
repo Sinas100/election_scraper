@@ -5,8 +5,8 @@
 
 import sys
 import os
-import pandas as pd
 from datetime import datetime
+import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from plotting_helper import *
@@ -37,7 +37,7 @@ PLOT_DIR = os.path.join(ROOT, f'plots/{STATE_ABB}/')
 # Read in data and create plots
 ###############################################################################
 
-ad = pd.read_csv(os.path.join(ROOT, 
+ad = pd.read_csv(os.path.join(ROOT,
                               f"plotters/{STATE_ABB}/plot_data/20250210.csv"))
 
 # Cut off the dataset after early voting period ends. We do this here because

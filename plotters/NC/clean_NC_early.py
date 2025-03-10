@@ -3,13 +3,13 @@
 # Written by sbaltz in 2024, refactored in 2025 by Sina Shaikh
 ###############################################################################
 
-import pandas as pd
 import zipfile
+import os
+import sys
 from datetime import date, timedelta, datetime
 from dateutil.relativedelta import relativedelta
 from tqdm import tqdm
-import os
-import sys
+import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from plotting_helper import *
@@ -22,9 +22,9 @@ from plotting_helper import *
 BASE_DIR = os.path.join(ROOT, 'plotters/NC/')
 RAW_FOLDER = os.path.join(BASE_DIR, 'past_data/absentee_20241105_20241105.zip')
 RAW_PREV = os.path.join(BASE_DIR, 'past_data/absentee_20201103.csv')
-START_DAY = datetime.strptime('09/20/2024','%m/%d/%Y').date() 
+START_DAY = datetime.strptime('09/20/2024','%m/%d/%Y').date()
 # datetime.today()
-CURR_DAY = datetime.strptime('11/05/2024','%m/%d/%Y').date() 
+CURR_DAY = datetime.strptime('11/05/2024','%m/%d/%Y').date()
 LAST_DAY_THEN = datetime.strptime('11/03/2020','%m/%d/%Y').date()
 
 # If you want to go all the way to past election day, True, else False
@@ -39,19 +39,18 @@ METHODS = ['MAIL', 'EARLY VOTING']
 #Calculate the dates of interest in 2024
 DATE_SEQ = pd.date_range(START_DAY, CURR_DAY-timedelta(days=1), freq='d')
 
-################################################################################
+###############################################################################
 # Read the raw data and build the dataframe to plot
-################################################################################
+###############################################################################
 if PREP_2020_DATA:
     prev = pd.read_csv(RAW_PREV, encoding='ISO-8859-1', low_memory=False)
-    
     prev['applyDate'] = pd.to_datetime(prev.ballot_req_dt)
     prev['sendDate'] = pd.to_datetime(prev.ballot_send_dt, errors='coerce')
     prev['returnDate'] = pd.to_datetime(prev.ballot_rtn_dt, errors='coerce')
     prev.loc[(prev.voter_party_code != 'DEM') &
              (prev.voter_party_code != 'REP'), 'voter_party_code'] = 'OTH'
     prev = prev.loc[prev.ballot_rtn_status == 'ACCEPTED']
-    prev.loc[prev.ballot_req_type == 'ONE-STOP', 
+    prev.loc[prev.ballot_req_type == 'ONE-STOP',
              'ballot_req_type'] = 'EARLY VOTING'
 
     #We need to generate a sequence of days that is the same number of days before
@@ -67,10 +66,8 @@ if PREP_2020_DATA:
         pd.to_datetime(START_DAY - relativedelta(years=4) - timedelta(days=2)),
         oldEndDay,
         freq='d')
-    
     #The current date sequence is simpler
     allDates = list(oldDateSeq) + list(DATE_SEQ)
-    
     #Now prepare an empty dataframe to store the plotting data
     entriesNum = len(allDates)*len(PARTIES)*len(METHODS)
     ad = pd.DataFrame(index=range(entriesNum),
