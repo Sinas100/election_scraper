@@ -7,9 +7,10 @@ import zipfile
 import os
 import sys
 from datetime import date, timedelta, datetime
+
+import pandas as pd
 from dateutil.relativedelta import relativedelta
 from tqdm import tqdm
-import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from plotting_helper import *
