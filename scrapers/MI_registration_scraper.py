@@ -5,7 +5,6 @@
 
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -38,5 +37,5 @@ driver = webdriver.Chrome(service=service, options=options)
 try:
     helper.download_file(BASE_URL, STATE_TYPE, driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")

@@ -18,7 +18,7 @@ import helper
 # Global variables
 ###############################################################################
 
-BASE_URL = "https://www.sos.la.gov/ElectionsAndVoting/Pages/Registration" 
+BASE_URL = "https://www.sos.la.gov/ElectionsAndVoting/Pages/Registration" \
 + "StatisticsParish.aspx"
 STATE_TYPE = "LA/registration"
 
@@ -41,7 +41,7 @@ driver = webdriver.Chrome(service=service, options=options)
 
 try:
     driver.get(BASE_URL)
-    driver.switch_to.frame("QueryStringPageViewer_ctl00$ctl34$g_04665f4c_f181" 
+    driver.switch_to.frame("QueryStringPageViewer_ctl00$ctl34$g_04665f4c_f181"
                            + "_417e_a8cf_884f1b8fa02e")
 
     WebDriverWait(driver, 15).until(
@@ -76,7 +76,7 @@ try:
         for link_href in link_hrefs:
             helper.download_file(link_href, STATE_TYPE, driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

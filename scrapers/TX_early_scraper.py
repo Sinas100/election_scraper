@@ -1,6 +1,6 @@
 ##############################################################################
 # Script to scrape the Texas early voting data
-# Written by Samuel Baltz in 2024 refactored by Sina Shaikh in 2025 
+# Written by Samuel Baltz in 2024 refactored by Sina Shaikh in 2025
 ###############################################################################
 
 from selenium import webdriver
@@ -82,7 +82,7 @@ try:
             dateMenu = Select(driver.find_element(By.NAME, "selectedDate"))
             helper.pause(1)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

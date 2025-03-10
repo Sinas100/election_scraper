@@ -51,17 +51,17 @@ try:
         links = driver.find_elements(By.XPATH, "//a[text()='Download']")
 
         for link in links:
-            helper.download_file(link.get_attribute("href"), 
-                                 STATE_TYPE, 
+            helper.download_file(link.get_attribute("href"),
+                                 STATE_TYPE,
                                  driver)
 
         try:
-            driver.get(driver.find_element(By.XPATH, 
+            driver.get(driver.find_element(By.XPATH,
                 "//a[@title='Go to next page']").get_attribute("href"))
         except NoSuchElementException:
             break
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

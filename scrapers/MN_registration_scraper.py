@@ -39,14 +39,14 @@ driver = webdriver.Chrome(service=service, options=options)
 ###############################################################################
 try:
     driver.get(BASE_URL)
-    
+
     WebDriverWait(driver, 15).until(
         EC.presence_of_element_located((By.TAG_NAME, 'table'))
-    )    
+    )
 
     caption = driver.find_element(By.TAG_NAME, "caption").text.strip()
     helper.write_csv(BASE_URL, STATE_TYPE, driver, 0, caption)
-    
+
     links = driver.find_elements(By.PARTIAL_LINK_TEXT, "Voter Registration")
 
     for link in links:
@@ -54,8 +54,7 @@ try:
                                         STATE_TYPE,
                                         driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()
-

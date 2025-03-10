@@ -3,7 +3,6 @@
 # Written by Sina Shaikh in 2024
 ###############################################################################
 
-import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -46,8 +45,8 @@ try:
     )
     helper.pause(3)
 
-    driver.find_element(By.ID, "username").send_keys("!!ENTER USERNAME HERE!!")
-    driver.find_element(By.ID, "password").send_keys("!!ENTER PASSWORD HERE!!")
+    driver.find_element(By.ID, "username").send_keys("ST-DOSFTP5A")
+    driver.find_element(By.ID, "password").send_keys("JQTxnEV4")
     driver.find_element(By.ID, "loginSubmit").click()
 
     WebDriverWait(driver, 10).until(
@@ -56,19 +55,19 @@ try:
 
     helper.pause(2)
 
-    driver.find_elements(By.CSS_SELECTOR, 
+    driver.find_elements(By.CSS_SELECTOR,
                          ".mat-checkbox-inner-container")[2].click()
     helper.pause(2)
-    driver.find_elements(By.CSS_SELECTOR, 
+    driver.find_elements(By.CSS_SELECTOR,
                          ".mat-checkbox-inner-container")[3].click()
     helper.pause(2)
-    
+
     driver.find_element(By.XPATH, "//span[text()='Download']").click()
-    
+
     helper.pause_while_downloading(helper.get_path(STATE_TYPE, False))
-    
+
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

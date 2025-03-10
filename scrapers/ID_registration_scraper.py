@@ -4,6 +4,7 @@
 ###############################################################################
 
 import os
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -70,16 +71,16 @@ try:
         which_table = 0
 
         for year in range(2002, 2015):
-                if str(year) in file_name:
-                    which_table = 1
-                    
+            if str(year) in file_name:
+                which_table = 1
+
         if ".xlsx" in link_hrefs[i]:
             helper.download_file(link_hrefs[i], STATE_TYPE, driver)
         elif not os.path.exists(os.path.join(path, f"{file_name}.csv")):
             helper.write_csv(link_hrefs[i], STATE_TYPE, driver,
                              which_table, file_name)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

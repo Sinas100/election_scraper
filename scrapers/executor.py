@@ -14,9 +14,9 @@ from datetime import date
 
 BASE_PATH = os.path.join(Path(__file__).resolve().parents[1])
 SCRAPER_PATH = os.path.join(BASE_PATH, "scrapers")
-# EVERY_WEEK is default, EVERY_MORNING, EVERY_EVENING, and INACTIVE are 
+# EVERY_WEEK is default, EVERY_MORNING, EVERY_EVENING, and INACTIVE are
 # also accepted values
-DOWNLOAD_FREQ_DICT = {"EVERY_MORNING": ["PA/early", 
+DOWNLOAD_FREQ_DICT = {"EVERY_MORNING": ["PA/early",
                                         "PA/registration", 
                                         "PA/mail", 
                                         "MI/registration",
@@ -28,8 +28,7 @@ DOWNLOAD_FREQ_DICT = {"EVERY_MORNING": ["PA/early",
                                         "TX/early"],
                         "EVERY_EVENING": ["FL/vbm"],
                         "INACTIVE": ["MT/registration", "RI/registration",
-                                     "NV/registration", "AZ/registration",
-                                     "PA/early"]}
+                                     "NV/registration", "AZ/registration"]}
 
 ###############################################################################
 # Running

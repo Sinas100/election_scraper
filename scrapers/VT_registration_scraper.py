@@ -35,11 +35,11 @@ driver = webdriver.Chrome(service=service, options=options)
 ###############################################################################
 
 try:
-    helper.write_csv(BASE_URL, STATE_TYPE, driver, 
-                     2, 
+    helper.write_csv(BASE_URL, STATE_TYPE, driver,
+                     2,
                      helper.CURR_DATE)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

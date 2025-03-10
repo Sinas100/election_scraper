@@ -39,7 +39,7 @@ driver = webdriver.Chrome(service=service, options=options)
 try:
     driver.get(BASE_URL)
     link_hrefs = []
-    
+
     WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, "January"))
     )
@@ -53,7 +53,7 @@ try:
                 STATE_TYPE,
                 driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

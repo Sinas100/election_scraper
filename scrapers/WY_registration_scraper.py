@@ -41,7 +41,7 @@ try:
     driver.get(BASE_URL)
 
     WebDriverWait(driver, 15).until(
-        EC.presence_of_element_located((By.XPATH, 
+        EC.presence_of_element_located((By.XPATH,
                                         "//a[contains(@href, '.pdf')]"))
     )
 
@@ -50,7 +50,7 @@ try:
     for link in links:
         helper.download_file(link.get_attribute("href"), STATE_TYPE, driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

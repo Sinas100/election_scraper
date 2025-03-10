@@ -4,6 +4,8 @@
 # Written by Sina Shaikh in 2024
 ###############################################################################
 
+import os
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -11,7 +13,6 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import os
 
 import helper
 
@@ -47,14 +48,14 @@ try:
                                 "Statewide Registered and Enrolled Data File"))
     )
 
-    li_elements = driver.find_elements(By.XPATH, "//li[a[contains(text()," 
+    li_elements = driver.find_elements(By.XPATH, "//li[a[contains(text(),"
                         + "'Statewide Registered and Enrolled Data File')]]")
 
 
     for li in li_elements:
         # Find the closest preceding <p> element for this <li>
         preceding_p = li.find_element(By.XPATH, "preceding::p[1]").text.strip()
-        
+
         links = li.find_elements(By.TAG_NAME, "a")
 
         for link in links:
@@ -62,12 +63,12 @@ try:
             if href and (".html" not in href) and (".pdf" not in href):
                 new_name = (f"{preceding_p} - {li.text}"
                             + f"{os.path.splitext(href)[1]}").replace('/', '')
-                helper.download_and_name(link.get_attribute("href"), 
-                                                    STATE_TYPE, 
+                helper.download_and_name(link.get_attribute("href"),
+                                                    STATE_TYPE,
                                                     driver,
                                                     new_name)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

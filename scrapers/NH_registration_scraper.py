@@ -49,11 +49,11 @@ try:
                 "tion-vnd-openxmlformats-officedocument-spreadsheetml-sheet")
     for link in links:
         helper.download_file(link.get_attribute("href"), STATE_TYPE, driver)
-    
+
     helper.write_csv(BASE_URL, STATE_TYPE, driver, 0, "past_registration")
 
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

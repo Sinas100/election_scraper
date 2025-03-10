@@ -58,7 +58,7 @@ try:
         # Extract the year from the href attribute of the dropdown
         year = dropdown.get_attribute('href').split('#')[-1]
         helper.pause(3)
-        # Collect links that contain the specific year in their partial link 
+        # Collect links that contain the specific year in their partial link
         year_links = driver.find_elements(By.PARTIAL_LINK_TEXT, " "+str(year))
         for year_link in year_links:
             href = year_link.get_attribute("href")
@@ -77,7 +77,7 @@ try:
     for href in saved_hrefs:
         driver.get(href)
         WebDriverWait(driver, 15).until(
-            EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, 
+            EC.presence_of_element_located((By.PARTIAL_LINK_TEXT,
                                             "Voter Registration"))
         )
 
@@ -96,9 +96,9 @@ try:
         download = WebDriverWait(driver, 15).until(
             EC.element_to_be_clickable((By.LINK_TEXT, "Download"))
         )
-        download.click()    
+        download.click()
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

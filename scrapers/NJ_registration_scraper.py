@@ -4,6 +4,7 @@
 ###############################################################################
 
 from datetime import datetime
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -48,7 +49,7 @@ try:
 
     dropdowns = driver.find_elements(By.CLASS_NAME, "card-header")
 
-    current_links = driver.find_elements(By.PARTIAL_LINK_TEXT, 
+    current_links = driver.find_elements(By.PARTIAL_LINK_TEXT,
                                          str(datetime.now().year)+" ")
 
     for link in current_links:
@@ -61,13 +62,13 @@ try:
         # Extract the year from the href attribute of the dropdown
         year = dropdown.text.split(' ')[0]
         helper.pause(3)
-        # Collect links that contain the specific year in their partial link 
+        # Collect links that contain the specific year in their partial link
         year_links = driver.find_elements(By.PARTIAL_LINK_TEXT, str(year)+ " ")
         for year_link in year_links:
             helper.download_file(year_link.get_attribute("href"),
                                  STATE_TYPE, driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

@@ -36,7 +36,7 @@ driver = webdriver.Chrome(service=service, options=options)
 try:
     helper.download_file(BASE_URL, STATE_TYPE, driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

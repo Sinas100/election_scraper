@@ -8,6 +8,7 @@
 ###############################################################################
 
 from datetime import datetime
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -47,11 +48,11 @@ try:
     driver.get(BASE_URL)
 
     WebDriverWait(driver, 15).until(
-        EC.presence_of_element_located((By.XPATH, 
+        EC.presence_of_element_located((By.XPATH,
                             "//a[contains(@href, 'showpublisheddocument')]"))
     )
-    
-    links = driver.find_elements(By.XPATH, 
+
+    links = driver.find_elements(By.XPATH,
                             "//a[contains(@href, 'showpublisheddocument')]")
 
     for link in links:
@@ -60,14 +61,14 @@ try:
     for year in range(2000, datetime.today().year):
         driver.get(BASE_URL+year+"-statistics/-fsiteid-1")
 
-        more_links = driver.find_elements(By.XPATH, 
+        more_links = driver.find_elements(By.XPATH,
                     "//table[1]").find_elements(By.PARTIAL_LINK_TEXT, "Excel")
-        
+
         for link in more_links:
-            helper.download_file(link.get_attribute("href"), 
+            helper.download_file(link.get_attribute("href"),
                                  STATE_TYPE, driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

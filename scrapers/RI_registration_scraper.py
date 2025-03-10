@@ -6,13 +6,14 @@
 # html
 ###############################################################################
 
+import os
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import pyperclip
 import pyautogui
-import os
 
 import helper
 
@@ -55,24 +56,24 @@ try:
 
     pyautogui.leftClick()
 
-    s = pyperclip.paste() 
+    s = pyperclip.paste()
     with open(os.path.join(PATH, helper.CURR_DATE+'_dem.txt'), 'w') as g:
         g.write(s)
 
-    pyautogui.moveTo(850, 600, duration=1)
+    pyautogui.moveTo(950, 600, duration=1)
     pyautogui.leftClick()
     pyautogui.rightClick()
-    pyautogui.moveTo(850, 600, duration=1)
-    pyautogui.moveTo(1070, 600, duration=1)
-    pyautogui.moveTo(1070, 625, duration=1)
+    pyautogui.moveTo(950, 600, duration=1)
+    pyautogui.moveTo(1270, 600, duration=1)
+    pyautogui.moveTo(1270, 625, duration=1)
 
     pyautogui.leftClick()
 
-    s = pyperclip.paste() 
-    with open(os.path.join(PATH, helper.CURR_DATE+'_no_lab.txt'), 'w') as g:
+    s = pyperclip.paste()
+    with open(os.path.join(PATH, helper.CURR_DATE+'_rep.txt'), 'w') as g:
         g.write(s)
 
-    pyautogui.moveTo(1050, 600, duration=1)
+    pyautogui.moveTo(1050, 590, duration=1)
     pyautogui.leftClick()
     pyautogui.rightClick()
     pyautogui.moveTo(1050, 600, duration=1)
@@ -81,25 +82,13 @@ try:
 
     pyautogui.leftClick()
 
-    s = pyperclip.paste() 
+    s = pyperclip.paste()
 
-    with open(os.path.join(PATH, helper.CURR_DATE+'_rep.txt'), 'w') as g:
-        g.write(s)
-
-    pyautogui.moveTo(1250, 585, duration=1)
-    pyautogui.leftClick()
-    pyautogui.rightClick()
-    pyautogui.moveTo(1250, 595, duration=1)
-    pyautogui.moveTo(1470, 595, duration=1)
-    pyautogui.moveTo(1470, 620, duration=1)
-
-    pyautogui.leftClick()
-
-    s = pyperclip.paste() 
     with open(os.path.join(PATH, helper.CURR_DATE+'_unaff.txt'), 'w') as g:
         g.write(s)
+
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

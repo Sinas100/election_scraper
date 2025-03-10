@@ -4,12 +4,13 @@
 ###############################################################################
 
 import os
+import shutil
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import pyautogui
-import shutil
 
 import helper
 
@@ -55,16 +56,16 @@ try:
 
     helper.pause(5)
 
-    os.rename(os.path.join(helper.get_path(STATE_TYPE, True), 
+    os.rename(os.path.join(helper.get_path(STATE_TYPE, True),
                            'County Data.xlsx'), 
-              os.path.join(helper.get_path(STATE_TYPE, False), 
+              os.path.join(helper.get_path(STATE_TYPE, False),
                            f"{helper.CURR_DATE}.xlsx"))
 
     helper.pause(5)
     shutil.rmtree(helper.get_path(STATE_TYPE, True))
 
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

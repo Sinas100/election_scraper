@@ -50,7 +50,7 @@ try:
         )
 
         links = []
-        links = driver.find_elements(By.PARTIAL_LINK_TEXT, 
+        links = driver.find_elements(By.PARTIAL_LINK_TEXT,
                                     " Voter Registration Statistics")
         hrefs = []
         link_texts =[]
@@ -71,20 +71,20 @@ try:
                 if element:
                     helper.download_and_name(element.get_attribute('href'),
                                             STATE_TYPE,
-                                            driver, 
-                                            link_texts[i] + "." 
+                                            driver,
+                                            link_texts[i] + "."
                             + element.get_attribute('href').rsplit('.', 1)[-1])
             except NoSuchElementException:
                 pass
             driver.back()
             helper.pause(10)
         try:
-            driver.get(driver.find_element(By.XPATH, 
+            driver.get(driver.find_element(By.XPATH,
                         "//a[@title='Go to next page']").get_attribute("href"))
         except NoSuchElementException:
             break
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

@@ -24,7 +24,7 @@ STATE_TYPE = "PA/registration"
 
 options = Options()
 
-options.add_experimental_option("prefs", helper.setup_prefs(STATE_TYPE, 
+options.add_experimental_option("prefs", helper.setup_prefs(STATE_TYPE,
                                                             quarantine = True))
 for arg in helper.SELENIUM_ARGUMENTS:
     options.add_argument(arg)
@@ -36,10 +36,10 @@ driver = webdriver.Chrome(service=service, options=options)
 ###############################################################################
 
 try:
-    helper.download_and_name(BASE_URL, STATE_TYPE, driver, 
+    helper.download_and_name(BASE_URL, STATE_TYPE, driver,
                              helper.CURR_DATE + ".xls")
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

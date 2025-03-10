@@ -36,10 +36,10 @@ driver = webdriver.Chrome(service=service, options=options)
 ###############################################################################
 
 try:
-    helper.download_and_name(BASE_URL, STATE_TYPE, driver, 
+    helper.download_and_name(BASE_URL, STATE_TYPE, driver,
                              helper.CURR_DATE + ".xlsx")
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

@@ -21,7 +21,6 @@ import helper
 BASE_URL = "https://elections.wi.gov/statistics-data/absentee-statistics"
 STATE_TYPE = "WI/early"
 
-
 ###############################################################################
 # Setup
 ###############################################################################

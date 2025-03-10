@@ -59,12 +59,12 @@ try:
             )
             more_links = driver.find_elements(By.PARTIAL_LINK_TEXT, "Voter Count")
             for m_link in more_links:
-                helper.download_file(m_link.get_attribute("href"), 
+                helper.download_file(m_link.get_attribute("href"),
                                      STATE_TYPE, driver)
             driver.back()
             helper.pause(2)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

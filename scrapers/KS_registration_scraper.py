@@ -47,7 +47,7 @@ try:
     driver.find_element(By.ID, "vrCountyTab").click()
 
     helper.pause(5)
-    dropdowns = driver.find_elements(By.XPATH, 
+    dropdowns = driver.find_elements(By.XPATH,
                                      "//button[contains(@class, " 
                                      + "'accordion-button collapsed')]")
 
@@ -63,7 +63,7 @@ try:
     for link in links:
         helper.download_file(link.get_attribute("href"), STATE_TYPE, driver)
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     driver.quit()

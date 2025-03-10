@@ -3,6 +3,9 @@
 # Written by Sina Shaikh in 2024
 ###############################################################################
 
+import os
+import shutil
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -11,8 +14,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
-import os
-import shutil
 
 import helper
 
@@ -57,17 +58,17 @@ try:
             driver.find_element(By.ID, "viewResults").click()
             helper.pause(1)
             driver.find_element(By.PARTIAL_LINK_TEXT, "Export").click()
-            
+
             helper.pause_while_downloading(helper.get_path(STATE_TYPE, False))
-            
+
             # Move files out of quarantine and name
             for file in os.listdir(helper.get_path(STATE_TYPE, True)):
                 os.rename(
-                    os.path.join(helper.get_path(STATE_TYPE, True), file), 
-                    os.path.join(helper.get_path(STATE_TYPE, False), 
+                    os.path.join(helper.get_path(STATE_TYPE, True), file),
+                    os.path.join(helper.get_path(STATE_TYPE, False),
                   f"{county.text}_{demographic.text}_{helper.CURR_DATE}.xlsx"))
 except Exception as e:
-    print(f"{STATE_TYPE} scraper failed to retrieve stats on " 
+    print(f"{STATE_TYPE} scraper failed to retrieve stats on "
           + f"{helper.CURR_DATE}: {str(e)}")
 finally:
     shutil.rmtree(helper.get_path(STATE_TYPE, True))
