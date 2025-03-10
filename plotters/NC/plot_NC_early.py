@@ -48,10 +48,10 @@ os.makedirs(os.path.join(PLOT_DIR, 'early'), exist_ok=True)
 os.makedirs(os.path.join(PLOT_DIR, 'mail'), exist_ok=True)
 
 for method in METHODS:
-    plot_relative(method, 
+    plot_relative(method,
                       ad,
                       PLOT_DIR,
-                      STATE, 
+                      STATE,
                       DATA_SOURCE,
                       ELECTION_DATES,
                       (0,31),

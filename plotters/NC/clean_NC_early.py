@@ -91,7 +91,7 @@ if PREP_2020_DATA:
                 ad.iloc[row] = theRow
                 row += 1
 
-    ad.to_csv(f'{BASE_DIR}plot_data/2020_values.csv', index=False) 
+    ad.to_csv(f'{BASE_DIR}plot_data/2020_values.csv', index=False)
     #We're done with the 2020 dataset; drop it
     del prev
 else:
