@@ -15,7 +15,7 @@ from datetime import date
 BASE_PATH = os.path.join(Path(__file__).resolve().parents[1])
 PLOTTER_PATH = os.path.join(BASE_PATH, "plotters")
 
-# There is no default, EVERY_WEEK, EVERY_MORNING, EVERY_EVENING, and INACTIVE 
+# There is no default, EVERY_WEEK, EVERY_MORNING, EVERY_EVENING, and INACTIVE
 # are accepted values
 DOWNLOAD_FREQ_DICT = {"EVERY_MORNING": ["WI/clean_WI_registration.py",
                                         "WI/plot_WI_registration.py"],
@@ -31,7 +31,7 @@ files_to_run = []
 time_of_day = sys.argv[1] if len(sys.argv) > 1 else "morning"
 
 if time_of_day == "morning":
-    if(date.today().weekday() == 0):
+    if date.today().weekday() == 0:
         for state_type in DOWNLOAD_FREQ_DICT["EVERY_WEEK"]:
             files_to_run.append(state_type)
     for state_type in DOWNLOAD_FREQ_DICT["EVERY_MORNING"]:

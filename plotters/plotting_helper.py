@@ -28,7 +28,7 @@ FONT_TO_ADD = "Styrene B"
 font_manager._get_fontconfig_fonts.cache_clear()
 font_files = font_manager.findSystemFonts(MY_FONT_DIR)
 for font_file in font_files:
-	font_list = font_manager.fontManager.addfont(font_file)
+    font_list = font_manager.fontManager.addfont(font_file)
 #font_manager.fontManager.ttflist.extend(font_list)
 # Set the font family globally for all plots
 plt.rcParams['font.family'] = FONT_TO_ADD
@@ -73,17 +73,17 @@ def plot_relative(method, ad, output, state, data_source, election_dates,
     if method == 'MAIL':
         modeToPrint = 'Mail-In'
         theYLabel = "Cumulative Mail-In Ballots Accepted"
-        saveFileName = os.path.join(output, "mail", 
+        saveFileName = os.path.join(output, "mail",
                                     date.today().strftime("%Y%m%d"))
     elif method == 'EARLY VOTING':
         modeToPrint = 'Early Vote'
         theYLabel = "Cumulative Early Votes Cast"
-        saveFileName = os.path.join(output, "early", 
+        saveFileName = os.path.join(output, "early",
                                     date.today().strftime("%Y%m%d"))
     elif method == 'REGISTRATION':
         modeToPrint = 'Registration'
         theYLabel = "Registered Voters"
-        saveFileName = os.path.join(output, "reg", 
+        saveFileName = os.path.join(output, "reg",
                                     date.today().strftime("%Y%m%d"))
 
     plt.title(
@@ -385,17 +385,17 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
     if method == 'MAIL':
         modeToPrint = 'Mail-In'
         theYLabel = "Cumulative Mail-In Ballots Accepted"
-        saveFileName = os.path.join(output, "mail", 
+        saveFileName = os.path.join(output, "mail",
                                     date.today().strftime("%Y%m%d"))
     elif method == 'EARLY VOTING':
         modeToPrint = 'Early Vote'
         theYLabel = "Cumulative Early Votes Cast"
-        saveFileName = os.path.join(output, "early", 
+        saveFileName = os.path.join(output, "early",
                                     date.today().strftime("%Y%m%d"))
     elif method == 'REGISTRATION':
         modeToPrint = 'Registration'
         theYLabel = "Registered Voters"
-        saveFileName = os.path.join(output, "reg", 
+        saveFileName = os.path.join(output, "reg",
                                     date.today().strftime("%Y%m%d"))
 
     plt.title(
@@ -427,7 +427,7 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
     for party in parties:
         p1 = period_1_data.loc[period_1_data.party == "TOTAL",
                                 y_var_to_plot].reset_index(drop=True)
-        p2 = period_2_data.loc[period_2_data.party == "TOTAL", 
+        p2 = period_2_data.loc[period_2_data.party == "TOTAL",
                                y_var_to_plot].reset_index(drop=True)
         plt.plot(list(period_1_data.loc[period_1_data.party == party, 'day']),
                     (p1 - p2).tolist(),
