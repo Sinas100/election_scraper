@@ -5,8 +5,8 @@
 
 import sys
 import os
-import pandas as pd
 from datetime import datetime
+import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from plotting_helper import *
@@ -33,15 +33,15 @@ PLOT_DIR = os.path.join(ROOT, f'plots/{STATE_ABB}/')
 # Read in data and create plots
 ###############################################################################
 
-ad = pd.read_csv(os.path.join(ROOT, 
+ad = pd.read_csv(os.path.join(ROOT,
                               f"plotters/{STATE_ABB}/plot_data/20250211.csv"))
 
 os.makedirs(os.path.join(PLOT_DIR, 'reg'), exist_ok=True)
 
-plot_absolute("REGISTRATION", 
+plot_absolute("REGISTRATION",
               ad,
               PLOT_DIR,
-              STATE, 
+              STATE,
               DATA_SOURCE,
               'registered_voters',
               6,

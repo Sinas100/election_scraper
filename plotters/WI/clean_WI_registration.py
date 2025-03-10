@@ -3,12 +3,12 @@
 # Written by Sina Shaikh in 2025
 ###############################################################################
 
-import pandas as pd
 from datetime import datetime
 import os
 import glob
 import sys
 from re import sub
+import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from plotting_helper import *
@@ -42,10 +42,10 @@ if not PREP_PAST_DATA:
 
 for file in files:
     standardized_file = sub(r",\s*", ", ", file)
-    date_str = " ".join(standardized_file.split()[:3])  
+    date_str = " ".join(standardized_file.split()[:3]) 
     file_date = datetime.strptime(date_str, "%B %d, %Y")
     year = file_date.year
-    
+
     if not PREP_PAST_DATA and year < max_year:
         continue
 
@@ -60,7 +60,7 @@ for file in files:
         df = pd.read_excel(file, sheet_name=0, header=header_row)
 
     vote_cols = [col for col in df.columns if "vote" in col.lower()]
-    
+
     total_votes = df[vote_cols].sum().sum() if vote_cols else 0
 
     data.append([file_date, total_votes, year])
