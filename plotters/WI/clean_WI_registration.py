@@ -42,7 +42,7 @@ if not PREP_PAST_DATA:
 
 for file in files:
     standardized_file = sub(r",\s*", ", ", file)
-    date_str = " ".join(standardized_file.split()[:3]) 
+    date_str = " ".join(standardized_file.split()[:3])
     file_date = datetime.strptime(date_str, "%B %d, %Y")
     year = file_date.year
 
@@ -76,12 +76,12 @@ elecDayCurr = ELECTION_DATES[2025]
 elecDayPrev = ELECTION_DATES[2023]
 output.loc[output.day.dt.year == 2023, 'daysLeft'] = (elecDayPrev -
                                                        output.day).dt.days
-output.loc[output.day.dt.year == 2025, 'daysLeft'] = (elecDayCurr - 
+output.loc[output.day.dt.year == 2025, 'daysLeft'] = (elecDayCurr -
                                                       output.day).dt.days
 output['year'] = output.day.dt.year
 output.daysLeft = output.daysLeft.astype("Int64")
 
 os.makedirs(os.path.join(BASE_DIR, 'plot_data'), exist_ok=True)
-output.to_csv(os.path.join(BASE_DIR, 'plot_data', 
+output.to_csv(os.path.join(BASE_DIR, 'plot_data',
                            f'{date.today().strftime("%Y%m%d")}.csv'),
            index=False)
