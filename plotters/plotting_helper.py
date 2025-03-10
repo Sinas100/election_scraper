@@ -3,11 +3,10 @@
 # Written by Sina Shaikh in 2025, using code from sbaltz and MedslStyleGuide
 ###############################################################################
 
-import matplotlib.font_manager as font_manager
-import matplotlib.pyplot as plt
 import os
 from datetime import date
 import matplotlib as mpl
+import matplotlib.font_manager as font_manager
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -49,10 +48,10 @@ medslRed2 = "#CD3C2B"
 
 # This allows you to plot values relative to an election cycle. To see an
 # example, see the NC early plot which plots election data relative to the 2020
-# and 2024 elections. 
+# and 2024 elections.
 def plot_relative(method, ad, output, state, data_source, election_dates,
                       xlims, y_var_to_plot):
-    
+
     date_to_print = date.today().strftime("%m/%d/%Y")
 
     years = list(election_dates.keys())
@@ -122,7 +121,7 @@ def plot_relative(method, ad, output, state, data_source, election_dates,
                                 election_dates.values()) + ")",
                 fontsize=10)
 
-    yearsToLine = {year: 'dotted' if year == years[0] 
+    yearsToLine = {year: 'dotted' if year == years[0]
     else 'solid' for year in years}
     yearsToMark = {year: '' for year in years}
 
@@ -148,12 +147,12 @@ def plot_relative(method, ad, output, state, data_source, election_dates,
                                     color=parties_to_cols["REP"])
         legendOth = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["OTH"])
-        first_legend = plt.legend(loc='upper left', 
+        first_legend = plt.legend(loc='upper left',
                                 prop={'size': 12},
                                 handles=[legendDem, legendRep, legendOth],
-                                labels=['Democrats', 'Republicans', 
+                                labels=['Democrats', 'Republicans',
                                         'All others'])
-        plt.gca().add_artist(first_legend)  
+        plt.gca().add_artist(first_legend)
 
         prevEx = mpl.lines.Line2D([], [],
                                 linewidth=3,
@@ -168,7 +167,7 @@ def plot_relative(method, ad, output, state, data_source, election_dates,
                                 handles=[prevEx, currEx],
                                 handlelength=3,
                                 labels=[str(year) for year in years])
-        plt.gca().add_artist(second_legend) 
+        plt.gca().add_artist(second_legend)
     else: 
         prevEx = mpl.lines.Line2D([], [],
                                 linewidth=3,
@@ -183,21 +182,21 @@ def plot_relative(method, ad, output, state, data_source, election_dates,
                                 handles=[prevEx, currEx],
                                 handlelength=3,
                                 labels=[str(year) for year in years])
-        plt.gca().add_artist(second_legend) 
+        plt.gca().add_artist(second_legend)
 
     plt.savefig(saveFileName, dpi=400)
     plt.close()
 
-# This allows you to plot values based on the date. To see an example, see the 
-# WI registration plot which plots voter registration data for the past 6 
+# This allows you to plot values based on the date. To see an example, see the
+# WI registration plot which plots voter registration data for the past 6
 # months and for the equivalent period four years prior.
 def plot_absolute(method, ad, output, state, data_source, y_var_to_plot,
                   how_many_months, years_since_last_cycle):
     date_to_print = date.today().strftime("%m/%d/%Y")
     cycles = ["Current", f"{years_since_last_cycle} Years Prior"]
-    
+
     ad['day'] = pd.to_datetime(ad['day'], format="%Y-%m-%d")
-    
+
     # Calculate the date range for the specified periods
     today = pd.to_datetime(date.today())
     current_cycle_start = today - pd.DateOffset(months=how_many_months)
@@ -210,10 +209,10 @@ def plot_absolute(method, ad, output, state, data_source, y_var_to_plot,
                         (ad['day'] <= today)]
     period_2_data = ad[(ad['day'] >= last_cycle_start) &
                         (ad['day'] <= last_cycle_end)]
-    
+
     period_2_data.loc[:, 'day'] = period_2_data['day'] + pd.DateOffset(
         years=years_since_last_cycle)
-    
+
     if len(ad['party'].unique()) > 1:
         parties_to_cols = {'DEM': medslBlue2,
                     'REP': medslRed2,
@@ -261,16 +260,16 @@ def plot_absolute(method, ad, output, state, data_source, y_var_to_plot,
     plt.xticks(fontsize=15)
     plt.gca().yaxis.set_major_formatter(
         mpl.ticker.StrMethodFormatter('{x:,.0f}'))
-    
+
     # Set Y-axis limits dynamically
     YMAX = max(ad.loc[ad.method == method, y_var_to_plot]) * 1.1
     YMIN = min(ad.loc[ad.method == method, y_var_to_plot]) / 1.1
     plt.ylim((YMIN, YMAX))
-    
+
     # Set labels for axes
     plt.ylabel(theYLabel, size=18, labelpad=20)
     plt.xlabel("Date", size=18, labelpad=15)
-    
+
     for party in parties:
         plt.plot(list(period_1_data.loc[period_1_data.party == party, 'day']),
                     list(period_1_data.loc[period_1_data.party == party,
@@ -297,16 +296,16 @@ def plot_absolute(method, ad, output, state, data_source, y_var_to_plot,
     if len(ad['party'].unique()) > 1:
         legendDem = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["DEM"])
-        legendRep = mpl.lines.Line2D([], [], linewidth=3, 
+        legendRep = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["REP"])
         legendOth = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["OTH"])
-        first_legend = plt.legend(loc='upper left', 
+        first_legend = plt.legend(loc='upper left',
                                 prop={'size': 12},
                                 handles=[legendDem, legendRep, legendOth],
-                                labels=['Democrats', 'Republicans', 
+                                labels=['Democrats', 'Republicans',
                                         'All others'])
-        plt.gca().add_artist(first_legend)  
+        plt.gca().add_artist(first_legend)
 
         prevEx = mpl.lines.Line2D([], [],
                                 linewidth=3,
@@ -321,8 +320,8 @@ def plot_absolute(method, ad, output, state, data_source, y_var_to_plot,
                                 handles=[prevEx, currEx],
                                 handlelength=3,
                                 labels=[str(cycle) for cycle in cycles])
-        plt.gca().add_artist(second_legend) 
-    else: 
+        plt.gca().add_artist(second_legend)
+    else:
         prevEx = mpl.lines.Line2D([], [],
                                 linewidth=3,
                                 color='black',
@@ -336,7 +335,7 @@ def plot_absolute(method, ad, output, state, data_source, y_var_to_plot,
                                 handles=[prevEx, currEx],
                                 handlelength=3,
                                 labels=[str(cycle) for cycle in cycles])
-        plt.gca().add_artist(second_legend) 
+        plt.gca().add_artist(second_legend)
 
     # Save the plot
     plt.savefig(saveFileName, dpi=400)
@@ -350,9 +349,9 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
                   how_many_months, years_since_last_cycle):
     date_to_print = date.today().strftime("%m/%d/%Y")
     cycles = ["Current", f"{years_since_last_cycle} Years Prior"]
-    
+
     ad['day'] = pd.to_datetime(ad['day'], format="%Y-%m-%d")
-    
+
     # Calculate the date range for the specified periods
     today = pd.to_datetime(date.today())
     current_cycle_start = today - pd.DateOffset(months=how_many_months)
@@ -365,10 +364,10 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
                         (ad['day'] <= today)]
     period_2_data = ad[(ad['day'] >= last_cycle_start) &
                         (ad['day'] <= last_cycle_end)]
-    
+
     period_2_data.loc[:, 'day'] = period_2_data['day'] + pd.DateOffset(
         years=years_since_last_cycle)
-    
+
     if len(ad['party'].unique()) > 1:
         parties_to_cols = {'DEM': medslBlue2,
                     'REP': medslRed2,
@@ -416,13 +415,13 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
     plt.xticks(fontsize=15)
     plt.gca().yaxis.set_major_formatter(
         mpl.ticker.StrMethodFormatter('{x:,.0f}'))
-    
+
     # Set Y-axis limits dynamically
-    
+
     # Set labels for axes
     plt.ylabel(theYLabel, size=18, labelpad=20)
     plt.xlabel("Date", size=18, labelpad=15)
-    
+
     ymax = 0
     ymin = 0
     for party in parties:
@@ -443,7 +442,6 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
         if min((p1 - p2).tolist()) < ymin:
             ymin = min((p1 - p2).tolist())
 
-    
     ymax = ymax * 1.4
     ymin = ymin * 1.4 if ymin < 0 else ymin / 1.5
     plt.ylim((ymin, ymax))
@@ -454,16 +452,16 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
     if len(ad['party'].unique()) > 1:
         legendDem = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["DEM"])
-        legendRep = mpl.lines.Line2D([], [], linewidth=3, 
+        legendRep = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["REP"])
         legendOth = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["OTH"])
-        first_legend = plt.legend(loc='upper left', 
+        first_legend = plt.legend(loc='upper left',
                                 prop={'size': 12},
                                 handles=[legendDem, legendRep, legendOth],
-                                labels=['Democrats', 'Republicans', 
+                                labels=['Democrats', 'Republicans',
                                         'All others'])
-        plt.gca().add_artist(first_legend)  
+        plt.gca().add_artist(first_legend)
 
         prevEx = mpl.lines.Line2D([], [],
                                 linewidth=3,
@@ -478,7 +476,7 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
                                 handles=[prevEx, currEx],
                                 handlelength=3,
                                 labels=[str(cycle) for cycle in cycles])
-        plt.gca().add_artist(second_legend) 
+        plt.gca().add_artist(second_legend)
 
     # Save the plot
     plt.savefig(saveFileName, dpi=400)
