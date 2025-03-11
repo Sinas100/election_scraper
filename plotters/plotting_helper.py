@@ -3,12 +3,13 @@
 # Written by Sina Shaikh in 2025, using code from sbaltz and MedslStyleGuide
 ###############################################################################
 
+from pathlib import Path
 import os
 from datetime import date
 
-import matplotlib as mpl
-import matplotlib.font_manager as font_manager
+from matplotlib import font_manager
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import pandas as pd
 
 ###############################################################################
@@ -74,18 +75,15 @@ def plot_relative(method, ad, output, state, data_source, election_dates,
     if method == 'MAIL':
         modeToPrint = 'Mail-In'
         theYLabel = "Cumulative Mail-In Ballots Accepted"
-        saveFileName = os.path.join(output, "mail",
-                                    date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
     elif method == 'EARLY VOTING':
         modeToPrint = 'Early Vote'
         theYLabel = "Cumulative Early Votes Cast"
-        saveFileName = os.path.join(output, "early",
-                                    date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
     elif method == 'REGISTRATION':
         modeToPrint = 'Registration'
         theYLabel = "Registered Voters"
-        saveFileName = os.path.join(output, "reg",
-                                    date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
 
     plt.title(
         f"{state} {modeToPrint} {years[0]} vs. " \
@@ -127,7 +125,6 @@ def plot_relative(method, ad, output, state, data_source, election_dates,
     yearsToMark = {year: '' for year in years}
 
     for year in years:
-        print(year)
         curr = ad.loc[(ad.year == year) & (ad.method == method)]
         for party in parties:
             plt.plot(list(curr.loc[curr.party == party, 'daysLeft']),
@@ -231,18 +228,15 @@ def plot_absolute(method, ad, output, state, data_source, y_var_to_plot,
     if method == 'MAIL':
         modeToPrint = 'Mail-In'
         theYLabel = "Cumulative Mail-In Ballots Accepted"
-        saveFileName = os.path.join(output, "mail",
-                                     date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
     elif method == 'EARLY VOTING':
         modeToPrint = 'Early Vote'
         theYLabel = "Cumulative Early Votes Cast"
-        saveFileName = os.path.join(output, "early",
-                                     date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
     elif method == 'REGISTRATION':
         modeToPrint = 'Registration'
         theYLabel = "Registered Voters"
-        saveFileName = os.path.join(output, "reg",
-                                     date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
 
     plt.title(
         f"{state} {modeToPrint} - {cycles[0]} vs. {cycles[1]}",
@@ -297,7 +291,7 @@ def plot_absolute(method, ad, output, state, data_source, y_var_to_plot,
     if len(ad['party'].unique()) > 1:
         legendDem = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["DEM"])
-        legendRep = mpl.lines.Line2D([], [], linewidth=3,
+        legendRep = mpl.lines.Line2D([], [], linewidth=3, 
                                     color=parties_to_cols["REP"])
         legendOth = mpl.lines.Line2D([], [], linewidth=3,
                                     color=parties_to_cols["OTH"])
@@ -386,18 +380,15 @@ def plot_change(method, ad, output, state, data_source, y_var_to_plot,
     if method == 'MAIL':
         modeToPrint = 'Mail-In'
         theYLabel = "Cumulative Mail-In Ballots Accepted"
-        saveFileName = os.path.join(output, "mail",
-                                    date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
     elif method == 'EARLY VOTING':
         modeToPrint = 'Early Vote'
         theYLabel = "Cumulative Early Votes Cast"
-        saveFileName = os.path.join(output, "early",
-                                    date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
     elif method == 'REGISTRATION':
         modeToPrint = 'Registration'
         theYLabel = "Registered Voters"
-        saveFileName = os.path.join(output, "reg",
-                                    date.today().strftime("%Y%m%d"))
+        saveFileName = os.path.join(output, date.today().strftime("%Y%m%d"))
 
     plt.title(
         f"{state} {modeToPrint} - {cycles[0]} vs. {cycles[1]}",
