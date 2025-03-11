@@ -27,7 +27,8 @@ STATE_TYPE = "WI/early"
 
 options = Options()
 
-options.add_experimental_option("prefs", helper.setup_prefs(STATE_TYPE))
+options.add_experimental_option("prefs", helper.setup_prefs(STATE_TYPE,
+                                                           quarantine=True))
 for arg in helper.SELENIUM_ARGUMENTS:
     options.add_argument(arg)
 
