@@ -16,7 +16,7 @@ import pandas as pd
 ###############################################################################
 #First download the .ttf files for the MEDSL fonts to whatever directory you
 # name in the following path:
-ROOT = '/Users/sinashaikh/Desktop/MEDSL/election_scraper/'
+ROOT = Path(__file__).resolve().parents[1]
 MY_FONT_DIR = os.path.join(ROOT, "plotters")
 
 #Change this to the name of the font you are trying to add
