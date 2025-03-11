@@ -34,8 +34,9 @@ PLOT_DIR = os.path.join(ROOT, f'plots/{STATE_ABB}/')
 # Read in data and create plots
 ###############################################################################
 
-ad = pd.read_csv(os.path.join(ROOT,
-                              f"plotters/{STATE_ABB}/plot_data/20250211.csv"))
+folder = os.path.join(ROOT, f"plotters/{STATE_ABB}/plot_data")
+csv_files = sorted(os.listdir(folder), reverse=True)
+ad = pd.read_csv(os.path.join(folder, csv_files[0]))
 
 os.makedirs(os.path.join(PLOT_DIR, 'reg'), exist_ok=True)
 
