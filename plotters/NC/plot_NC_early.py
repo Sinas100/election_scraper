@@ -38,8 +38,9 @@ PLOT_DIR = os.path.join(ROOT, f'plots/{STATE_ABB}/')
 # Read in data and create plots
 ###############################################################################
 
-ad = pd.read_csv(os.path.join(ROOT,
-                              f"plotters/{STATE_ABB}/plot_data/20250210.csv"))
+folder = os.path.join(ROOT, f"plotters/{STATE_ABB}/plot_data")
+csv_files = sorted(os.listdir(folder), reverse=True)
+ad = pd.read_csv(os.path.join(folder, csv_files[0]))
 
 # Cut off the dataset after early voting period ends. We do this here because
 # we want to modify the data not the plot window
