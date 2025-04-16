@@ -1,12 +1,22 @@
-# 2024 Election Scrapers
-
+---
+title: '2024 Election Scrapers'
+tags:
+  - Python
+  - politics
+  - webscraping
 authors:
   - name: Sina Shaikh
+    orcid: 0009-0009-3771-9581
     affiliation: 1
-
 affiliations:
-  - index: 1
-    name: Massachusetts Institute of Technology
+ - name: Massachusetts Institute of Technology, United States
+   index: 1
+   ror: 042nb2s44
+date: 16 April 2025
+bibliography: paper.bib
+---
+
+# 2024 Election Scrapers
 
 ### Summary
 
