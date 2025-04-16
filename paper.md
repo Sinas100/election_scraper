@@ -1,5 +1,5 @@
 ---
-title: 'US Election Scrapers'
+title: 'US Voter Registration and Early Voting Scrapers'
 tags:
   - Python
   - politics
@@ -16,7 +16,7 @@ date: 16 April 2025
 bibliography: paper.bib
 ---
 
-# 2024 Election Scrapers
+# US Voter Registration and Early Voting Scrapers
 
 ### Summary
 
