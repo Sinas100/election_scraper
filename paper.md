@@ -38,7 +38,7 @@ Election Scrapers uses a combination of python and cron to allow the user to sel
 
 ### Related Work
 
-While you can purchase nationwide voter registration data from third parties such as L2 and TargetSmart, many organizations lack the resources to afford these large aggregated datasets. The scrapers in this package were used to gather the data plot used in the creation of the [Stanford-MIT Elections Performance Central](https://www.elexcentral.org/state-updates/north-carolina) project. Researchers plan to use this package to provide additional visibility to the Wisconsin and Virginia elections happening in 2025.
+While you can purchase nationwide voter registration data from third parties such as L2 and TargetSmart, many organizations lack the resources to afford these large aggregated datasets. The scrapers in this package were used to gather the data plot used in the creation of the [Stanford-MIT Elections Performance Central](https://www.elexcentral.org/state-updates/north-carolina) project which covered registration and early voting in the November 2024 election. Researchers also used it to cover the [2025 Wisconsin Spring Election](https://www.elexcentral.org/state-updates/wisconsin?utm_content=buffer4dc3e&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) and plan to use this package to provide additional visibility to the Virginia Governors race and other elections happening in 2025.
 
 ### Acknowledgements
 
