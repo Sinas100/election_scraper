@@ -1,5 +1,5 @@
 ---
-title: '2024 Election Scrapers'
+title: 'US Election Scrapers'
 tags:
   - Python
   - politics
