@@ -6,6 +6,8 @@ Sina Shaikh
 
 Election Scrapers is a package for automatically extracting official election data from state websites across the United States. In total, the package includes 43 scrapers which gather voter registration information, mail voting counts, and early in-person voting data in the most geographically granular form provided by the states, with breakdowns by party or demographics when available. As an example use case, we’ve provided scripts which clean and plot data from North Carolina prior to the 2020 election and the framework to automatically generate additional plots.
 
+![Example plot showing North Carolina Early Vote Data](plots/NC/early/20250211.png)
+
 ### Statement of Need
 
 Because elections in the United States are run at the state level, election data is scattered across state websites in widely varying forms. Further, some websites overwrite old data with new data in as little as a day. While it is possible for researchers to visit these websites and copy the data manually, this package allows the process to be automated so that the data is collected quickly and no data is missed. Users of this package will create redundant data stores which increase the likelihood of preserving and making available this important data.
