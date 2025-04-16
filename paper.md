@@ -43,7 +43,3 @@ While you can purchase nationwide voter registration data from third parties suc
 ### Acknowledgements
 
 Thank you to the MIT Election Data and Science Lab, Samuel Baltz, and Mason Reece for extensive feedback on the code design and structure.
-
-### References
-
-Stanford-MIT. "State Updates." Elections Performance Central. Last modified 2024. <https://www.elexcentral.org/state-updates>.
