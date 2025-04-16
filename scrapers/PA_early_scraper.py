@@ -45,8 +45,9 @@ try:
     )
     helper.pause(3)
 
-    driver.find_element(By.ID, "username").send_keys("ST-DOSFTP5A")
-    driver.find_element(By.ID, "password").send_keys("JQTxnEV4")
+    # You can request access here: https://paebrprod.powerappsportals.us/EBR/DOS/mail-in-voter-file-request/
+    driver.find_element(By.ID, "username").send_keys("INSERT YOUR USERNAME")
+    driver.find_element(By.ID, "password").send_keys("INSERT YOUR PASSWORD")
     driver.find_element(By.ID, "loginSubmit").click()
 
     WebDriverWait(driver, 10).until(
