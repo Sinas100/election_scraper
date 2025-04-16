@@ -6,7 +6,7 @@ readme first written by Sina Shaikh at MEDSL in 2025
 ## Setup
 
 1. Clone or download this repository.
-2. Install the latest version of Python and pip if you don't have it already. 
+2. Install the latest version of Python and pip if you haven't. 
 3. In your console, change directory to the election\_scraper folder.
 4. Install dependencies by typing in the following in console:
   ```
