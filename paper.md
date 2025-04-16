@@ -1,6 +1,12 @@
 # 2024 Election Scrapers
 
-Sina Shaikh
+authors:
+  - name: Sina Shaikh
+    affiliation: 1
+
+affiliations:
+  - index: 1
+    name: Massachusetts Institute of Technology
 
 ### Summary
 
